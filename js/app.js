@@ -7,12 +7,18 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   for (const exp of expenses) {
     totalExpenses += parseFloat(exp.value);
   }
-  // update total expenses
-  document.getElementById("total-exp").innerText = totalExpenses;
 
-  // update balance
-  balance = document.getElementById("balance").innerText =
-    income - totalExpenses;
+  // Condition Check
+  if (totalExpenses > income) {
+    error("Your expenses is higher than your income");
+  } else {
+    // update total expenses
+    document.getElementById("total-exp").innerText = totalExpenses;
+
+    // update balance
+    balance = document.getElementById("balance").innerText =
+      income - totalExpenses;
+  }
 });
 
 document.getElementById("save-btn").addEventListener("click", function () {
@@ -23,20 +29,31 @@ document.getElementById("save-btn").addEventListener("click", function () {
   const savingInputPercentage = savingInput / 100;
   const savingAmount = income * savingInputPercentage;
 
-  // update saving amount
-  document.getElementById("saving-amount").innerText = savingAmount;
-
   // get total balance
-  const balance = document.getElementById("balance");
-  const balanceAmount = parseFloat(balance.innerText);
+  const currentBalance = document.getElementById("balance");
+  const currentBalanceAmount = parseFloat(currentBalance.innerText);
+  const remainingAmount = document.getElementById("remaining-amount");
 
-  // update remaining amount
-  document.getElementById("remaining-amount").innerText =
-    balanceAmount - savingAmount;
+  // Condition Check
+  if (savingAmount > currentBalanceAmount) {
+    error("Your savings amount is higher than your balance");
+    savingInput.value = "";
+    remainingAmount.innerText = currentBalanceAmount;
+  } else {
+    // update saving amount
+    document.getElementById("saving-amount").innerText = savingAmount;
+
+    // update remaining amount
+    remainingAmount.innerText = currentBalanceAmount - savingAmount;
+  }
 });
 
 // Function
 function getInputIdValue(id) {
   let input = document.getElementById(id);
   return parseFloat(input.value);
+}
+function error(message) {
+  document.getElementById("show-error").classList.add("show");
+  document.getElementById("error-message").innerText = message;
 }
