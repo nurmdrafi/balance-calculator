@@ -29,38 +29,38 @@
                         <h5 class="text-center">Income</h5>
                         <div class="text-center d-flex align-items-center justify-content-end my-3">
                             <label for="">Income:</label>
-                            <input type="text">
+                            <input type="text" id="income">
                             <div class="form-text"></div>
                         </div>
                         <!-- Expenses -->
                         <h5 class="text-center">Expenses</h5>
                         <div class="text-center d-flex align-items-center justify-content-end">
                             <label for="">Food:</label>
-                            <input type="text">
+                            <input type="text" class="exp">
                             <div class="form-text"></div>
                         </div>
                         <div class="text-center d-flex align-items-center justify-content-end">
                             <label for="">Rent:</label>
-                            <input type="text">
+                            <input type="text" class="exp">
                             <div class="form-text"></div>
                         </div>
                         <div class="text-center d-flex align-items-center justify-content-end">
                             <label for="">Clothes:</label>
-                            <input type="text">
+                            <input type="text" class="exp">
                             <div class="form-text"></div>
                         </div>
     
                         <!-- Calculation -->
                         <div class="d-flex justify-content-center my-3">
-                            <button class="btn btn-primary text-white px-4">Calculate</button>
+                            <button class="btn btn-primary text-white px-4" id="calculate-btn">Calculate</button>
                         </div>
-                        <h5 class="text-center">Total Expenses: <span>00</span></h5>
-                        <h5 class="text-center">Balance <span>00</span></h5>
+                        <h5 class="text-center">Total Expenses: <span id="total-exp">00</span></h5>
+                        <h5 class="text-center">Balance <span id="balance">00</span></h5>
                         <div class="my-3 d-flex justify-content-end align-items-center">
                             <label for="">Save</label>
                             <input type="text">
                             <span>%</span>
-                            <button class="btn btn-primary text-white ms-1">Save</button>
+                            <button class="btn btn-primary text-white ms-2" id="save-btn">Save</button>
                             <div class="form-text"></div>
                         </div>
                         <h5 class="text-center">Saving Amount <span>00</span></h5>
