@@ -11,18 +11,25 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   const totalExpensesText = document.getElementById("total-exp");
 
   // Current Balance
-  const balance = document.getElementById("balance")
+  const balance = document.getElementById("balance");
+
   // Condition Check
   if (isNaN(income)) {
     error("You did not enter your income amount");
   } else if (isNaN(totalExpenses)) {
     error("Please do not blank any expenses input");
-
   } else if (totalExpenses > income) {
     error("Your expenses is higher than your income");
     totalExpensesText.innerText = totalExpenses;
     totalExpensesField.style.color = "red";
     balance.innerText = income - totalExpenses;
+  } else if (
+    checkNegative("income") ||
+    checkNegative("food") ||
+    checkNegative("rent") ||
+    checkNegative("clothes")
+  ) {
+    error("Please Input a valid positive number");
   } else {
     // update total expenses
     totalExpensesText.innerText = totalExpenses;
@@ -51,6 +58,8 @@ document.getElementById("save-btn").addEventListener("click", function () {
   // Condition Check
   if (isNaN(savingInputValue)) {
     error("Your savings amount is empty");
+  } else if (checkNegative("saving-input")) {
+    error("Please Input a valid positive number");
   } else if (currentBalanceAmount == 00) {
     error("Your balance is empty");
     savingsInputField.value = "";
@@ -100,10 +109,20 @@ function inputError(inputId, errorFieldId) {
 
     if (isNaN(value)) {
       errorField.style.color = "red";
+    } else if (value < 0) {
+      errorField.style.color = "red";
     } else if (value == "") {
       errorField.style.color = "transparent";
     } else if (!isNaN(value)) {
       errorField.style.color = "transparent";
     }
   });
+}
+
+// Check Negative Value
+function checkNegative(id) {
+  let value = document.getElementById(id).value;
+  if (value < 0) {
+    return true;
+  }
 }
