@@ -42,6 +42,7 @@ document.getElementById("save-btn").addEventListener("click", function () {
   const currentBalance = document.getElementById("balance");
   const currentBalanceAmount = parseFloat(currentBalance.innerText);
   const remainingAmount = document.getElementById("remaining-amount");
+  const savingsTextField = document.getElementById("saving-amount");
 
   // Condition Check
   if (isNaN(savingInput)) {
@@ -54,9 +55,10 @@ document.getElementById("save-btn").addEventListener("click", function () {
     error("Your savings amount is higher than your balance");
     remainingAmount.innerText = currentBalanceAmount;
     savingsInputField.value = '';
+    savingsTextField.innerText = '00'
   } else {
     // update saving amount
-    document.getElementById("saving-amount").innerText = savingAmount;
+    savingsTextField.innerText = savingAmount;
 
     // update remaining amount
     remainingAmount.innerText = currentBalanceAmount - savingAmount;
