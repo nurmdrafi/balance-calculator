@@ -16,18 +16,15 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   // Condition Check
   if (isNaN(income) || checkNegative("income")) {
     error("Please Input a valid positive number");
-  } 
-  else if (
+  } else if (
     checkNegative("food") ||
     checkNegative("rent") ||
     checkNegative("clothes")
   ) {
     error("Please Do not input negative numbers");
-  } 
-   else if (isNaN(totalExpenses)) {
+  } else if (isNaN(totalExpenses)) {
     error("Please Input a valid positive numbe");
-  } 
-  else if (totalExpenses > income) {
+  } else if (totalExpenses > income) {
     error("Your expenses is higher than your income");
     totalExpensesText.innerText = totalExpenses;
     totalExpensesField.style.color = "red";
