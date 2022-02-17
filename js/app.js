@@ -15,6 +15,7 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
     error("You did not enter your income amount");
   } else if (isNaN(totalExpenses)) {
     error("Please do not blank any expenses input");
+
   } else if (totalExpenses > income) {
     error("Your expenses is higher than your income");
     totalExpensesText.innerText = totalExpenses;
@@ -56,7 +57,6 @@ document.getElementById("save-btn").addEventListener("click", function () {
     savingsInputField.value = "";
     savingsTextField.innerText = "00";
   } else {
-
     // update saving amount
     savingsTextField.innerText = savingAmount;
 
@@ -77,7 +77,6 @@ document.getElementById("close-btn").addEventListener("click", function () {
   document.getElementById("show-error").classList.remove("show");
   document.getElementById("show-error").classList.add("hide");
 });
-
 
 // Functions //==>
 function getInputIdValue(id) {
@@ -105,5 +104,3 @@ function inputError(inputId, errorFieldId) {
     }
   });
 }
-
-
