@@ -16,7 +16,7 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
     document.getElementById("total-exp").innerText = totalExpenses;
 
     // update balance
-    balance = document.getElementById("balance").innerText =
+    document.getElementById("balance").innerText =
       income - totalExpenses;
   }
 });

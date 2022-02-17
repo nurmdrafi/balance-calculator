@@ -21,7 +21,8 @@ input[type="text"]:focus{
     height: 100%;
     object-fit: cover;
     object-position: center;
+    padding: 0;
 }
 .calc-bg{
-    background-color: #F8F8F8;
+    background-color: #e7e6e65e;
 }
