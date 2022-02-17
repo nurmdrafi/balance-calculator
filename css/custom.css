@@ -27,5 +27,5 @@ input[type="text"]:focus{
     background-color: #e7e6e65e;
 }
 .error-text{
-    display: none;
+    color: transparent;
 }

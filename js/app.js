@@ -89,10 +89,13 @@ function inputError(inputId, errorFieldId) {
     const errorField = document.getElementById(errorFieldId);
 
     if (isNaN(value)) {
-      errorField.style.display = "block";
+      errorField.style.color = "red";
       errorField.innerText = "Please Input a valid number";
     } else if (value == "") {
-      errorField.style.display = "none";
+      errorField.style.color = "transparent";
+    } else if(!isNaN(value)){
+      errorField.style.color = "transparent";
+
     }
   });
 }
