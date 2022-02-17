@@ -26,3 +26,6 @@ input[type="text"]:focus{
 .calc-bg{
     background-color: #e7e6e65e;
 }
+.error-text{
+    display: none;
+}

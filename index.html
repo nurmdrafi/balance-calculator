@@ -23,48 +23,62 @@
                 <img class="calc-img pe-0 pe-lg-4 pb-4 pb-lg-0" src="img/money-calculation.jpg" alt="">
             </div>
             <div class="col-12 col-lg-4 calc-bg px-3 py-5">
-                <form action="#">
-                    <!-- Income -->
-                    <h5 class="text-center">Income</h5>
-                    <div class="text-center d-flex align-items-center justify-content-end my-3">
+
+                <!-- Income -->
+                <h5 class="text-center">Income</h5>
+                <div class="my-3">
+                    <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="income">Income:</label>
                         <input type="text" id="income">
-                        <div class="form-text"></div>
                     </div>
-                    <!-- Expenses -->
-                    <h5 class="text-center">Expenses</h5>
+                    <div id="income-error-field" class="error-text text-end text-danger"></div>
+                </div>
+
+
+                <!-- Expenses -->
+                <h5 class="text-center">Expenses</h5>
+                <!-- Food Input -->
+                <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="food">Food:</label>
                         <input type="text" id="food" class="expenses">
-                        <div class="form-text"></div>
                     </div>
+                    <div id="food-error-field" class="error-text text-end text-danger"></div>
+                </div>
+                <!-- Rent Input -->
+                <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="rent">Rent:</label>
                         <input type="text" id="rent" class="expenses">
-                        <div class="form-text"></div>
                     </div>
+                    <div id="rent-error-field" class="error-text text-end text-danger"></div>
+                </div>
+                <!-- Clothes Input -->
+                <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="clothes">Clothes:</label>
                         <input type="text" id="clothes" class="expenses">
-                        <div class="form-text"></div>
                     </div>
+                    <div id="clothes-error-field" class="error-text text-end text-danger"></div>
+                </div>
+                <!-- Calculation -->
+                <div class="d-flex justify-content-center my-3">
+                    <button class="btn btn-primary text-white px-4" id="calculate-btn">Calculate</button>
+                </div>
+                <h5 class="text-center">Total Expenses: <span id="total-exp">00</span></h5>
+                <h5 class="text-center">Balance: <span id="balance">00</span></h5>
+                <!-- Savings Input -->
+                <div class="my-3 d-flex justify-content-end align-items-center">
+                    <label for="saving-input">Save</label>
+                    <input type="text" id="saving-input">
+                    <span>%</span>
+                    <button class="btn btn-primary text-white ms-2" id="save-btn">Save</button>
+                </div>
+                <div id="savings-error-field" class="error-text text-end text-danger"></div>
 
-                    <!-- Calculation -->
-                    <div class="d-flex justify-content-center my-3">
-                        <button class="btn btn-primary text-white px-4" id="calculate-btn">Calculate</button>
-                    </div>
-                    <h5 class="text-center">Total Expenses: <span id="total-exp">00</span></h5>
-                    <h5 class="text-center">Balance: <span id="balance">00</span></h5>
-                    <div class="my-3 d-flex justify-content-end align-items-center">
-                        <label for="saving-input">Save</label>
-                        <input type="text" id="saving-input">
-                        <span>%</span>
-                        <button class="btn btn-primary text-white ms-2" id="save-btn">Save</button>
-                        <div class="form-text"></div>
-                    </div>
-                    <h5 class="text-center">Saving Amount: <span id="saving-amount">00</span></h5>
-                    <h5 class="text-center">Remaining Amount: <span id="remaining-amount">00</span></h5>
-                </form>
+                <h5 class="text-center">Saving Amount: <span id="saving-amount">00</span></h5>
+                <h5 class="text-center">Remaining Amount: <span id="remaining-amount">00</span></h5>
+
                 <!-- Error Message -->
                 <!-- Toast Notification -->
                 <div id="show-error"
@@ -72,7 +86,7 @@
                     role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div id="error-message" class="toast-body fs-6"></div>
-                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                        <button id="close-btn" type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
                             aria-label="Close"></button>
                     </div>
                 </div>
