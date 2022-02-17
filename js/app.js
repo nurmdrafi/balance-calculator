@@ -1,30 +1,31 @@
 document.getElementById("calculate-btn").addEventListener("click", function () {
+  // get income
   const income = getInputIdValue("income");
 
   // get total expenses
-  let totalExpenses = 0;
-  const expenses = document.getElementsByClassName("expenses");
-  for (const exp of expenses) {
-    totalExpenses += parseFloat(exp.value);
-  }
-  
+  const food = getInputIdValue("food");
+  const rent = getInputIdValue("rent");
+  const clothes = getInputIdValue("clothes");
+  const totalExpenses = food + rent + clothes;
+  const totalExpensesField = document.getElementById("total-exp-field");
+  const totalExpensesText = document.getElementById("total-exp");
+
   // Condition Check
-  if(isNaN(income)){
+  if (isNaN(income)) {
     error("You did not enter your income amount");
-  }
-  else if(isNaN(totalExpenses)){
+  } else if (isNaN(totalExpenses)) {
     error("Please do not blank any expenses input");
-  }
-  else if (totalExpenses > income) {
+  } else if (totalExpenses > income) {
     error("Your expenses is higher than your income");
-  }
-   else {
+    totalExpensesText.innerText = totalExpenses;
+    totalExpensesField.style.color = "red";
+  } else {
     // update total expenses
-    document.getElementById("total-exp").innerText = totalExpenses;
+    totalExpensesText.innerText = totalExpenses;
+    totalExpensesField.style.color = "black";
 
     // update balance
-    document.getElementById("balance").innerText =
-      income - totalExpenses;
+    document.getElementById("balance").innerText = income - totalExpenses;
   }
 });
 
@@ -32,6 +33,7 @@ document.getElementById("save-btn").addEventListener("click", function () {
   const income = getInputIdValue("income");
 
   // get saving amount
+  const savingsInputField = document.getElementById('saving-input');
   const savingInput = getInputIdValue("saving-input");
   const savingInputPercentage = savingInput / 100;
   const savingAmount = income * savingInputPercentage;
@@ -42,13 +44,16 @@ document.getElementById("save-btn").addEventListener("click", function () {
   const remainingAmount = document.getElementById("remaining-amount");
 
   // Condition Check
-  if(isNaN(savingInput)){
+  if (isNaN(savingInput)) {
     error("Your savings amount is empty");
+  } else if(currentBalanceAmount == 00 ){
+    error("Your balance is empty");
+    savingsInputField.value = '';
   }
-  else if (savingAmount > currentBalanceAmount) {
+   else if (savingAmount > currentBalanceAmount) {
     error("Your savings amount is higher than your balance");
-    savingInput.value = "";
     remainingAmount.innerText = currentBalanceAmount;
+    savingsInputField.value = '';
   } else {
     // update saving amount
     document.getElementById("saving-amount").innerText = savingAmount;
@@ -66,6 +71,7 @@ function getInputIdValue(id) {
 
 function error(message) {
   document.getElementById("show-error").classList.add("show");
+  document.getElementById("show-error").classList.remove("hide");
   document.getElementById("error-message").innerText = message;
 }
 
@@ -75,39 +81,22 @@ inputError("rent", "rent-error-field");
 inputError("clothes", "clothes-error-field");
 inputError("saving-input", "savings-error-field");
 
-function inputError(inputId, errorFieldId){
-  document.getElementById(inputId).addEventListener('keyup', function(e){
+function inputError(inputId, errorFieldId) {
+  document.getElementById(inputId).addEventListener("keyup", function (e) {
     const value = e.target.value;
     const errorField = document.getElementById(errorFieldId);
-     
-    if(isNaN(value)){
-      errorField.style.display = 'block';
-      errorField.innerText = 'Please Input a valid number';
-    }else if(value == ""){
-      errorField.style.display = 'none';
-    }
-  })
-}
 
+    if (isNaN(value)) {
+      errorField.style.display = "block";
+      errorField.innerText = "Please Input a valid number";
+    } else if (value == "") {
+      errorField.style.display = "none";
+    }
+  });
+}
 
 // Close btn
-document.getElementById('close-btn').addEventListener('click', function(){
-  resetInputField('income');
-  resetInputField('food');
-  resetInputField('rent');
-  resetInputField('clothes');
-  resetInputField('saving-input');
-
-  resetTextField('total-exp');
-  resetTextField('balance');
-  resetTextField('saving-amount');
-  resetTextField('remaining-amount');
-})
-
-function resetInputField(id){
-  document.getElementById(id).value = '';
-}
-
-function resetTextField(id){
-  document.getElementById(id).innerText = '00';
-}
+document.getElementById("close-btn").addEventListener("click", function () {
+  document.getElementById("show-error").classList.remove("show");
+  document.getElementById("show-error").classList.add("hide");
+});

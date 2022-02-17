@@ -29,7 +29,7 @@
                 <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="income">Income:</label>
-                        <input type="text" id="income">
+                        <input type="text" id="income" required>
                     </div>
                     <div id="income-error-field" class="error-text text-end text-danger"></div>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="food">Food:</label>
-                        <input type="text" id="food" class="expenses">
+                        <input type="text" id="food">
                     </div>
                     <div id="food-error-field" class="error-text text-end text-danger"></div>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="rent">Rent:</label>
-                        <input type="text" id="rent" class="expenses">
+                        <input type="text" id="rent">
                     </div>
                     <div id="rent-error-field" class="error-text text-end text-danger"></div>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="my-3">
                     <div class="text-center d-flex align-items-center justify-content-end">
                         <label for="clothes">Clothes:</label>
-                        <input type="text" id="clothes" class="expenses">
+                        <input type="text" id="clothes">
                     </div>
                     <div id="clothes-error-field" class="error-text text-end text-danger"></div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="d-flex justify-content-center my-3">
                     <button class="btn btn-primary text-white px-4" id="calculate-btn">Calculate</button>
                 </div>
-                <h5 class="text-center">Total Expenses: <span id="total-exp">00</span></h5>
+                <h5 class="text-center" id="total-exp-field">Total Expenses: <span id="total-exp">00</span></h5>
                 <h5 class="text-center">Balance: <span id="balance">00</span></h5>
                 <!-- Savings Input -->
                 <div class="my-3 d-flex justify-content-end align-items-center">
