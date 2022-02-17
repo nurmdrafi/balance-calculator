@@ -2,7 +2,7 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   // get income
   const income = getInputIdValue("income");
 
-  // get total expenses
+  // calculate total expenses
   const food = getInputIdValue("food");
   const rent = getInputIdValue("rent");
   const clothes = getInputIdValue("clothes");
@@ -32,31 +32,31 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
 document.getElementById("save-btn").addEventListener("click", function () {
   const income = getInputIdValue("income");
 
-  // get saving amount
-  const savingsInputField = document.getElementById('saving-input');
-  const savingInput = getInputIdValue("saving-input");
-  const savingInputPercentage = savingInput / 100;
+  // get and calculate saving amount
+  const savingsInputField = document.getElementById("saving-input");
+  const savingInputValue = getInputIdValue("saving-input");
+  const savingInputPercentage = savingInputValue / 100;
   const savingAmount = income * savingInputPercentage;
+  const savingsTextField = document.getElementById("saving-amount");
 
-  // get total balance
+  // get current and remaining balance
   const currentBalance = document.getElementById("balance");
   const currentBalanceAmount = parseFloat(currentBalance.innerText);
   const remainingAmount = document.getElementById("remaining-amount");
-  const savingsTextField = document.getElementById("saving-amount");
 
   // Condition Check
-  if (isNaN(savingInput)) {
+  if (isNaN(savingInputValue)) {
     error("Your savings amount is empty");
-  } else if(currentBalanceAmount == 00 ){
+  } else if (currentBalanceAmount == 00) {
     error("Your balance is empty");
-    savingsInputField.value = '';
-  }
-   else if (savingAmount > currentBalanceAmount) {
+    savingsInputField.value = "";
+  } else if (savingAmount > currentBalanceAmount) {
     error("Your savings amount is higher than your balance");
     remainingAmount.innerText = currentBalanceAmount;
-    savingsInputField.value = '';
-    savingsTextField.innerText = '00'
+    savingsInputField.value = "";
+    savingsTextField.innerText = "00";
   } else {
+
     // update saving amount
     savingsTextField.innerText = savingAmount;
 
@@ -64,6 +64,20 @@ document.getElementById("save-btn").addEventListener("click", function () {
     remainingAmount.innerText = currentBalanceAmount - savingAmount;
   }
 });
+
+// Error handling for string input
+inputError("income", "income-error-field");
+inputError("food", "food-error-field");
+inputError("rent", "rent-error-field");
+inputError("clothes", "clothes-error-field");
+inputError("saving-input", "savings-error-field");
+
+// Notification close button
+document.getElementById("close-btn").addEventListener("click", function () {
+  document.getElementById("show-error").classList.remove("show");
+  document.getElementById("show-error").classList.add("hide");
+});
+
 
 // Functions //==>
 function getInputIdValue(id) {
@@ -77,12 +91,6 @@ function error(message) {
   document.getElementById("error-message").innerText = message;
 }
 
-inputError("income", "income-error-field");
-inputError("food", "food-error-field");
-inputError("rent", "rent-error-field");
-inputError("clothes", "clothes-error-field");
-inputError("saving-input", "savings-error-field");
-
 function inputError(inputId, errorFieldId) {
   document.getElementById(inputId).addEventListener("keyup", function (e) {
     const value = e.target.value;
@@ -90,18 +98,12 @@ function inputError(inputId, errorFieldId) {
 
     if (isNaN(value)) {
       errorField.style.color = "red";
-      errorField.innerText = "Please Input a valid number";
     } else if (value == "") {
       errorField.style.color = "transparent";
-    } else if(!isNaN(value)){
+    } else if (!isNaN(value)) {
       errorField.style.color = "transparent";
-
     }
   });
 }
 
-// Close btn
-document.getElementById("close-btn").addEventListener("click", function () {
-  document.getElementById("show-error").classList.remove("show");
-  document.getElementById("show-error").classList.add("hide");
-});
+
