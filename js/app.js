@@ -10,6 +10,8 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   const totalExpensesField = document.getElementById("total-exp-field");
   const totalExpensesText = document.getElementById("total-exp");
 
+  // Current Balance
+  const balance = document.getElementById("balance")
   // Condition Check
   if (isNaN(income)) {
     error("You did not enter your income amount");
@@ -20,13 +22,14 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
     error("Your expenses is higher than your income");
     totalExpensesText.innerText = totalExpenses;
     totalExpensesField.style.color = "red";
+    balance.innerText = income - totalExpenses;
   } else {
     // update total expenses
     totalExpensesText.innerText = totalExpenses;
     totalExpensesField.style.color = "black";
 
     // update balance
-    document.getElementById("balance").innerText = income - totalExpenses;
+    balance.innerText = income - totalExpenses;
   }
 });
 
